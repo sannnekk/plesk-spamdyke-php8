@@ -1,0 +1,116 @@
+<!--
+html{
+overflow-y:scroll;
+}
+
+.vis{display: inline;visibility: visible  }
+   
+.invis{display: none; visibility: inherit }
+
+.fatred{color:#FF0000;font-weight:bold;}
+.fatgreen{color:#006600;font-weight:bold;}
+.fatgrey{color:#666666;font-weight:bold;}
+.bold{font-weight:bold;}
+.boldMenu{background:#FEFEFE;}
+
+.big{font-size:14px;}
+
+.ital{font-size:10px;font-weight:bold;	}
+
+.white{
+font-family: Courier new;
+padding:1px;
+border:1px solid #000000;
+color:#000000;
+}
+
+.sucherg{
+ background:#FBFA70;
+ }
+
+#stat{
+border:1px outset #000000;
+float:left;
+}
+
+.black{
+font-family: Courier new;
+padding:1px;
+border:1px solid #000000;
+background:#000000;
+color:#FFFFFF;
+}
+
+.rand{
+padding:5px;
+}
+
+.noreq{color:#666666;}
+
+.legendInactiv{
+ border-color: #000000;
+ border: 1px solid;
+ cursor:pointer;
+ }
+
+.legendActiv{
+ border-color: #000000;
+ border: 1px solid;
+ background: #C1FFC1;
+ cursor:pointer;
+ }
+
+#iplists,#senderlists,#rdnslists,#iplook,#recipientlists,#stats{
+overflow:none;
+z-index:3;
+position:fixed;
+height:480px; 
+width:640px;
+margin:-240px 0px 0px -320px;
+top: 50%; 
+left: 50%; 
+}
+
+#iplook_content {
+ padding: 10px 10px 0;
+ overflow: auto;
+ width: 620px;
+ height: 460px;
+ }
+
+#keywordlists,#headerlists{
+overflow:none;
+z-index:3;
+position:fixed;
+height:480px; 
+width:320px;
+margin:-240px 0px 0px -160px;
+top: 50%; 
+left: 50%; 
+}
+
+
+#blind {
+ z-index:1;
+ position:absolute;
+ height:175;
+ overflow:none;
+ background:#CCCCCC;
+ filter:alpha(opacity=80); 
+ -moz-opacity: 0.80; 
+ opacity: 0.80;
+ }
+
+#fader {
+ z-index:2;
+ position:fixed;
+ height:100%;
+ width:100%;
+ overflow:auto;
+ background:url(bg.gif);
+ background-attachment:fixed;
+ filter:alpha(opacity=90); 
+ -moz-opacity: 0.90; 
+ opacity: 0.90;
+ }
+-->

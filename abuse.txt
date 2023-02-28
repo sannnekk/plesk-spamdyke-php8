@@ -1,0 +1,9 @@
+a:3:{s:6:"sender";s:25:"webmaster@root05.hmnet.eu";s:5:"titel";s:22:"Spam from your Systems";s:8:"template";s:224:"Dear Sir and Madam,
+since a few days your system is spamming my server:
+
+{SPAMLINE}
+
+Please, stop sending spam via your system. Otherwise I have to set your system on my blacklist.
+
+Best Regards
+Server Administration";}
