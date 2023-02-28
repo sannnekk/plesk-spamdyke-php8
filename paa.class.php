@@ -43,7 +43,6 @@ class paa{
       function paa($sess,$dom=null,$db=null){
       
                  if(!defined("IS_ADMIN")) define("IS_ADMIN",1);
-                 throw new Exception($sess);
 	
 		 $this->plesk_session = $sess;
                  $this->plesk_domain = $dom;
