@@ -732,7 +732,7 @@ function setlistdate(dat){
 <div id="content">
 <div id="head">
   <div id="logo"><img src="logo.png"></div>
-  <div id="titel"><strong>Spamdyke Control Panel Version (<?php echo SCP_VERSION;?>-<?php echo LOG_TYPE;?>)</strong><br>[<?php $scp->checkVersion(SCP_VERSION);?>]</div>
+  <div id="titel"><strong>Spamdyke Control Panel Version </strong><br>Version 5.0[fork] by <a href="https://github.com/sannnekk" target="_blank">sannnekk</a></div>
   <?php if($action != "admin"):?>
   <div id="topsearch">
         <form name="suchenf" id="suchf" method="post" action="index.php?<?php $scp->getQueryString(); ?>&todo=anzeige<?php echo ($scp->getAdmin()->isAllView)?"&action=allview":"";?>">
