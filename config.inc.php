@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 error_reporting(1);
 
-define("DB_USR", "admin");
+define("DB_USR", "DB_USER");
 define("DB_PWD", trim(exec ("cat /etc/psa/.psa.shadow")));
 define("DB_NAME", "psa");
 define("DB_HOST", "localhost");
