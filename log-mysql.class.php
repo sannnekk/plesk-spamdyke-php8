@@ -277,8 +277,8 @@ class readlog extends paa{
 		   $url = $this->versionUrl.".txt";
  	   	   $p = fopen($url,"r");
 	 	   $ver  = fgets($p,16);
-	 	   fclose($fp);
-		   $dateihandle = fopen("server.ver","w");
+	 	   //fclose($fp);
+		   $dateihandle = fopen(__DIR__ . "/server.ver","w");
 		   fwrite($dateihandle, $ver);
 		   fclose($dateihandle);
 		   }
@@ -286,7 +286,7 @@ class readlog extends paa{
 		   $url = "server.ver";
  	   	   $p = fopen($url,"r");
 	 	   $ver  = fgets($p,16);
-	 	   fclose($fp);
+	 	   //fclose($fp);
 		   }
 		
 		$dateihandle = fopen("server.ver","w");

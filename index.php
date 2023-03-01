@@ -23,7 +23,7 @@ $action = "main";
 
 if($_GET["action"] != "") $action = $_GET["action"];
 
-$scp = scp::factory($session, $_GET, array(DB_HOST,DB_NAME,DB_USR,DB_PWD));
+$scp = scp::factory((object)$_SESSION, $_GET, array(DB_HOST,DB_NAME,DB_USR,DB_PWD));
 $scp->feProps('filter,rechte,einstellungen');
 
 $checkOut = $scp->dieRechte->spamdykeConfigCheck();
