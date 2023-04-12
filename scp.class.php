@@ -12,22 +12,20 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
-if(!defined("LOG_TYPE")) define("LOG_TYPE","file");
+if (!defined("LOG_TYPE")) define("LOG_TYPE", "file");
 
 require("./securityfilter.php");
 include("./xtea.class.php");
 require("./AdminRights.class.php");
 require("./optionboxes.class.php");
-require("./log-".LOG_TYPE.".class.php");
+require("./log-" . LOG_TYPE . ".class.php");
 
 
-class scp{
-   public static function factory($sess,$getVars,$db=null){
-      
-          return new readlog($sess,$getVars,$db);
-       
-          }
+class scp
+{
+   public static function factory($sess, $getVars, $db = null)
+   {
+
+      return new readlog($sess, $getVars, $db);
+   }
 }
-              
-
-?>

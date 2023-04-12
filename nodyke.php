@@ -12,18 +12,17 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
-?>  
+?>
 <table width="700" border="0" cellspacing="0" cellpadding="3" height="300">
-  <tr> 
-    <td colspan="2" align="center" valign="middle"> 
-      <?php 
+  <tr>
+    <td colspan="2" align="center" valign="middle">
+      <?php
 
-      if(!$scp->spamDykeConfError){
-         echo "<b>".SCP_NO_SPAMDYKE."</b>";
-         }
-      else {
-        echo "<b>".$scp->spamDykeConfError."</b>";
-        }
+      if (!$scp->spamDykeConfError) {
+        echo "<b>" . SCP_NO_SPAMDYKE . "</b>";
+      } else {
+        echo "<b>" . $scp->spamDykeConfError . "</b>";
+      }
 
       ?>
     </td>
@@ -32,10 +31,10 @@ You should have received a copy of the GNU General Public License along with thi
 
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
- <tr align="center" valign="middle"> 
+  <tr align="center" valign="middle">
     <td height="1" bgcolor="000000"></td>
   </tr>
-  <tr align="center" valign="middle"> 
+  <tr align="center" valign="middle">
     <td height="5">&copy; 2008-2018 <a href="http://www.haggybear.de">Matthias Hackbarth</a></td>
   </tr>
 </table>

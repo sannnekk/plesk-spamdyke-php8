@@ -14,148 +14,144 @@ You should have received a copy of the GNU General Public License along with thi
 */
 ?>
 <script language="javascript">
-<!--
+  <!--
+  function setStatus(tf, id) {
+    statText = "<span class=\"fatred\"><?php echo UPDATE_SCP_NOK; ?></span>";
+    if (tf) statText = "<span class=\"fatgreen\"><?php echo UPDATE_SCP_OK; ?></span>";
+    document.getElementById(id).innerHTML = statText;
+  }
 
-function setStatus(tf,id){
-         statText = "<span class=\"fatred\"><?php echo UPDATE_SCP_NOK;?></span>";         
-         if(tf) statText = "<span class=\"fatgreen\"><?php echo UPDATE_SCP_OK;?></span>";         
-	 document.getElementById(id).innerHTML = statText;
-         }
-
-//-->
+  //
+  -->
 </script>
 
 
-<?php 
+<?php
 include("./db.php");
 
 ob_start();
 ?>
 <table width="500" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td colspan="2"><b><?php echo UPDATE_SCP;?></b></td>
+  <tr>
+    <td colspan="2"><b><?php echo UPDATE_SCP; ?></b></td>
   </tr>
-  <tr> 
-    <td><?php echo UPDATE_DOWN;?></td>
+  <tr>
+    <td><?php echo UPDATE_DOWN; ?></td>
     <td id="down"></td>
   </tr>
-  <tr> 
-    <td><?php echo UPDATE_CONFIG;?></td>
+  <tr>
+    <td><?php echo UPDATE_CONFIG; ?></td>
     <td id="config"></td>
   </tr>
-  <tr> 
-    <td><?php echo UPDATE_INSTALL;?></td>
+  <tr>
+    <td><?php echo UPDATE_INSTALL; ?></td>
     <td id="install"></td>
   </tr>
-  <tr> 
-    <td><?php echo UPDATE_DONE;?></td>
+  <tr>
+    <td><?php echo UPDATE_DONE; ?></td>
     <td id="done"></td>
   </tr>
 </table>
-<?php 
+<?php
 ob_end_flush();
 ob_start();
 exec('./wrapper "3" "0"');
 $weiter = 0;
-if(file_exists("scp2_update.zip")) $weiter = 1;
+if (file_exists("scp2_update.zip")) $weiter = 1;
 echo "<script language=\"javascript\">setStatus($weiter,'down');</script>";
 ob_end_flush();
 ob_start();
-if($weiter){
-   $zip = zip_open("scp2_update.zip");
-   if ($zip) {
-       while ($zip_entry = zip_read($zip)) {
-              $file = basename(zip_entry_name($zip_entry));
-    	         if($file == "version.php"){
-                    if (zip_entry_open($zip, $zip_entry, "r")) {
-                         $aktVer = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
-                         zip_entry_close($zip_entry);
-                       }
-                    }
-    	         if($file == "config.new.txt"){
-                    if (zip_entry_open($zip, $zip_entry, "r")) {
-                         $newConf = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
-                         zip_entry_close($zip_entry);
-                       }
-                    }
-	      }		
-      }				              
-   zip_close($zip);
-   echo "<script language=\"javascript\">setStatus(".$weiter.",'config');</script>";
-   }
-else{
+if ($weiter) {
+  $zip = zip_open("scp2_update.zip");
+  if ($zip) {
+    while ($zip_entry = zip_read($zip)) {
+      $file = basename(zip_entry_name($zip_entry));
+      if ($file == "version.php") {
+        if (zip_entry_open($zip, $zip_entry, "r")) {
+          $aktVer = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
+          zip_entry_close($zip_entry);
+        }
+      }
+      if ($file == "config.new.txt") {
+        if (zip_entry_open($zip, $zip_entry, "r")) {
+          $newConf = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
+          zip_entry_close($zip_entry);
+        }
+      }
+    }
+  }
+  zip_close($zip);
+  echo "<script language=\"javascript\">setStatus(" . $weiter . ",'config');</script>";
+} else {
   echo "<script language=\"javascript\">setStatus(0,'config');</script>";
   echo "<script language=\"javascript\">setStatus(0,'install');</script>";
   echo "<script language=\"javascript\">setStatus(0,'done');</script>";
   exec('./wrapper "3" "3"');
-  }
-ob_end_flush();  
+}
+ob_end_flush();
 ob_start();
-if($weiter){
+if ($weiter) {
   exec('./wrapper "3" "2"');
-  $fp = fopen ("version.php", "r");
-  $insVer = fread ($fp, filesize ("version.php"));
-  fclose ($fp);
-  if($insVer != $aktVer) $weiter = 0;
+  $fp = fopen("version.php", "r");
+  $insVer = fread($fp, filesize("version.php"));
+  fclose($fp);
+  if ($insVer != $aktVer) $weiter = 0;
 
-  if(!empty($newConf)){
-     $fp = fopen ("config.inc.php", "r");
-     $conf = fread ($fp, filesize ("config.inc.php"));
-     fclose ($fp);
-     $conf = str_replace("?>",$newConf."\n?>",$conf);
-     exec("./wrapper '3' '2a' '".$conf."'");
-     }
-
-  echo "<script language=\"javascript\">setStatus(".$weiter.",'install');</script>";
+  if (!empty($newConf)) {
+    $fp = fopen("config.inc.php", "r");
+    $conf = fread($fp, filesize("config.inc.php"));
+    fclose($fp);
+    $conf = str_replace("?>", $newConf . "\n?>", $conf);
+    exec("./wrapper '3' '2a' '" . $conf . "'");
   }
-else{
+
+  echo "<script language=\"javascript\">setStatus(" . $weiter . ",'install');</script>";
+} else {
   echo "<script language=\"javascript\">setStatus(0,'install');</script>";
   echo "<script language=\"javascript\">setStatus(0,'done');</script>";
   exec('./wrapper "3" "3"');
-  }
+}
 ob_end_flush();
 ob_start();
-if($weiter){
+if ($weiter) {
   exec('./wrapper "3" "3"');
-  if(file_exists("scp2_update.zip")) $weiter = 0;
-  echo "<script language=\"javascript\">setStatus(".$weiter.",'done');</script>";
-  }
-else{
+  if (file_exists("scp2_update.zip")) $weiter = 0;
+  echo "<script language=\"javascript\">setStatus(" . $weiter . ",'done');</script>";
+} else {
   echo "<script language=\"javascript\">setStatus(0,'done');</script>";
- }
+}
 ob_end_flush();
 
-if($weiter){
+if ($weiter) {
   $infoTxt = file("INSTALL.txt");
   unlink("server.ver");
   $infoTxtOut = false;
   echo "<center class=\"fatgreen\">";
   echo "<br><br>";
-  $aktVer =  str_replace("<?php","",$aktVer);
-  $aktVer =  str_replace('define("SCP_VERSION","','',$aktVer);
-  $aktVer =  str_replace('");','',$aktVer);
-  $aktVer =  str_replace("?>","",$aktVer);
-  echo str_replace("{VER}","<u>".trim($aktVer)."</u>",UPDATE_SCP_SUCCESS);
+  $aktVer =  str_replace("<?php", "", $aktVer);
+  $aktVer =  str_replace('define("SCP_VERSION","', '', $aktVer);
+  $aktVer =  str_replace('");', '', $aktVer);
+  $aktVer =  str_replace("?>", "", $aktVer);
+  echo str_replace("{VER}", "<u>" . trim($aktVer) . "</u>", UPDATE_SCP_SUCCESS);
   echo "<br><br>";
-  echo "<form action=\"index.php?".$scp->queryString."\" method=\"post\">";
+  echo "<form action=\"index.php?" . $scp->queryString . "\" method=\"post\">";
   echo "<input type=\"submit\" name=\"forward\" value=\"OK\">";
   echo "<br><br>";
   echo "<div style=\"text-align:left;width:75%;border:1px dotted #FF0000;color:#000000;background:#D6D6D6;font-family:'Courier New'\">";
-  for($r=0;$r<count($infoTxt);$r++){
-      if($infoTxtOut) echo str_replace(" ","&nbsp;",$infoTxt[$r])."<br>";
-      if(trim($infoTxt[$r])== "History:") $infoTxtOut = true;
-      if(stristr($infoTxt[$r],"First public BETA")) $infoTxtOut = false;
-      }
-  echo "</div>";
-  
-  echo "</center>";
+  for ($r = 0; $r < count($infoTxt); $r++) {
+    if ($infoTxtOut) echo str_replace(" ", "&nbsp;", $infoTxt[$r]) . "<br>";
+    if (trim($infoTxt[$r]) == "History:") $infoTxtOut = true;
+    if (stristr($infoTxt[$r], "First public BETA")) $infoTxtOut = false;
   }
-else{
+  echo "</div>";
+
+  echo "</center>";
+} else {
   echo "<center class=\"fatred\">";
   echo "<br><br>";
   echo UPDATE_SCP_FAILED;
   echo "</center>";
-  }
+}
 
- 
+
 ?>

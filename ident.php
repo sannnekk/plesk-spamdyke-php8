@@ -15,33 +15,32 @@ You should have received a copy of the GNU General Public License along with thi
 
 error_reporting(1);
 
-exec("whois ".$_GET["dieip"],$output);
+exec("whois " . $_GET["dieip"], $output);
 
-if(empty($output)){
-   die("<br><br><font size=\"4\" color=\"FF0000\"><center>No WHOIS on system installed!<br>Please install with \"<b>apt-get install whois</b>\" or \"<b>yast -i whois</b>\"</center>");
-   }
-   
-function findMail($m){
-	 $m = ereg_replace('[-a-z0-9!#$%&\'*+/=?^_`{|}~]+@([.]?[a-zA-Z0-9_/-])*','<img src="abuse.jpg" title="report spam" alt="report spam"> <a href="javascript://" onClick="abuseReport(\''.$_GET["row"].'\',\'\\0\')">\\0</a>',$m);
-	 return $m;
-	 }   
+if (empty($output)) {
+	die("<br><br><font size=\"4\" color=\"FF0000\"><center>No WHOIS on system installed!<br>Please install with \"<b>apt-get install whois</b>\" or \"<b>yast -i whois</b>\"</center>");
+}
 
-echo "<b><u>IP: ".$_GET["dieip"]."</u></b><br><br>";
+function findMail($m)
+{
+	$m = ereg_replace('[-a-z0-9!#$%&\'*+/=?^_`{|}~]+@([.]?[a-zA-Z0-9_/-])*', '<img src="abuse.jpg" title="report spam" alt="report spam"> <a href="javascript://" onClick="abuseReport(\'' . $_GET["row"] . '\',\'\\0\')">\\0</a>', $m);
+	return $m;
+}
+
+echo "<b><u>IP: " . $_GET["dieip"] . "</u></b><br><br>";
 echo "<table width=\"580\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-foreach($output as $key => $value){
-echo "<tr>";	
-if($_GET["abuse"])$value = findMail($value);
-if(stristr($value,":")){
-$val = explode(": ",$value);
-if($val[0] && $val[1] != ""){
-echo "<td width=\"120\">".$val[0]."</td>";
-echo "<td width=\"460\">".$val[1]."</td>";
+foreach ($output as $key => $value) {
+	echo "<tr>";
+	if ($_GET["abuse"]) $value = findMail($value);
+	if (stristr($value, ":")) {
+		$val = explode(": ", $value);
+		if ($val[0] && $val[1] != "") {
+			echo "<td width=\"120\">" . $val[0] . "</td>";
+			echo "<td width=\"460\">" . $val[1] . "</td>";
+		}
+	} else {
+		if (trim($value) != "") echo "<td colspan =\"2\" width=\"580\">" . $value . "</td>";
+	}
+	echo "</tr>";
 }
-}else{
-if(trim($value) != "")echo "<td colspan =\"2\" width=\"580\">".$value."</td>";
-}
-echo "</tr>";
-}   
 echo "</table>";
-
-?>

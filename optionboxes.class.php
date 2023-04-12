@@ -13,56 +13,49 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
-class optionboxes{
-     
-
-     /**
-       * Konstruktor
-       *
-       */
-
-     var $boxName;
-
-     var $selPoint;
-
-     var $event;
-
-     function optionboxes($name){
-             $this->boxName = $name;
-             }
-
-     function setSelPoint($sel){
-              $this->selPoint = $sel;
-              }
-
-     function setEvent($ev){
-              $this->event = $ev;
-              }
-
-     function getBox($opts, $vals){
-              echo "<select name=\"".$this->boxName."\" ".$this->event.">";
-               for($t=0;$t<count($opts);$t++){
-                   $sel = "";
-                   if($this->selPoint == $opts[$t]) $sel = "selected";
-                   echo "<option value=\"".$opts[$t]."\" $sel>".$vals[$t]."</option>";
-                   }
-               echo "</select>";
-
-              }
-             
-
-     }
+class optionboxes
+{
 
 
+  /**
+   * Konstruktor
+   *
+   */
 
+  var $boxName;
 
+  var $selPoint;
 
+  var $event;
 
+  function optionboxes($name)
+  {
+    $this->boxName = $name;
+  }
 
+  function __construct($name)
+  {
+    $this->optionboxes($name);
+  }
 
+  function setSelPoint($sel)
+  {
+    $this->selPoint = $sel;
+  }
 
+  function setEvent($ev)
+  {
+    $this->event = $ev;
+  }
 
-
-
-
-?>
+  function getBox($opts, $vals)
+  {
+    echo "<select name=\"" . $this->boxName . "\" " . $this->event . ">";
+    for ($t = 0; $t < count($opts); $t++) {
+      $sel = "";
+      if ($this->selPoint == $opts[$t]) $sel = "selected";
+      echo "<option value=\"" . $opts[$t] . "\" $sel>" . $vals[$t] . "</option>";
+    }
+    echo "</select>";
+  }
+}

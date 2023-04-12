@@ -11,9 +11,9 @@ chown root.root wrapper
 */
 
 /*
-Man sollte noch Überprüfungen einbauen für die Return Codes von ALLEN benutzen
+Man sollte noch ï¿½berprï¿½fungen einbauen fï¿½r die Return Codes von ALLEN benutzen
 Funtionen im wrapper!
-Was wäre wenn "setuid()" fehlschlägt? Der wrapper gibt nix zurück!!
+Was wï¿½re wenn "setuid()" fehlschlï¿½gt? Der wrapper gibt nix zurï¿½ck!!
 */
 
 #include <stdlib.h>
