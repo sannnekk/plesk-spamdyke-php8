@@ -1,3 +1,2 @@
 <?php
-define("SCP_VERSION","4.1");
-?>
+define("SCP_VERSION", "4.1");

@@ -18,9 +18,9 @@ $db_user = DB_USR_GL;
 $db_passwort = DB_PWD_GL;
 $db_name = DB_NAME_GL;
 
-class DBi {
+class DBi
+{
     public static $conn;
 }
 
-DBi::$conn = mysqli_connect($db_server,$db_user,$db_passwort,$db_name);
-?>
+DBi::$conn = mysqli_connect($db_server, $db_user, $db_passwort, $db_name);

@@ -15,41 +15,36 @@ You should have received a copy of the GNU General Public License along with thi
 
 error_reporting(1);
 
-define("DB_USR", "DB_USER");
-define("DB_PWD", trim(exec ("cat /etc/psa/.psa.shadow")));
+define("DB_USR", "admin");
+define("DB_PWD", trim(exec("cat /etc/psa/.psa.shadow")));
 define("DB_NAME", "psa");
+define("DB_NAME_SPAMDYKE", "spamdyke");
 define("DB_HOST", "localhost");
 define("QMAIL_PATH", "/var/qmail/");
-define("LOG_FILE","/var/log/mail.info");
-define("SPAMDYKE_CONFIG","/etc/spamdyke.conf");
+define("LOG_FILE", "/var/log/mail.info");
+define("SPAMDYKE_CONFIG", "/etc/spamdyke.conf");
 
 //Only if you want to use the autoupdate function
-define("AUTOUPDATE",true);
+define("AUTOUPDATE", true);
 
 // define your language file, ex: en; ro; de;
 define("LANG", "de");
 
-define("PSA_PATH",trim(exec ("grep PRODUCT_ROOT_D /etc/psa/psa.conf | sed s/^[t]*[A-Z_]*[t]*//"))."/");
-define("PSA_VERSION",doubleval(substr(trim(exec ("cat ".PSA_PATH."version")),0,4)));
+define("PSA_PATH", trim(exec("grep PRODUCT_ROOT_D /etc/psa/psa.conf | sed s/^[t]*[A-Z_]*[t]*//")) . "/");
+define("PSA_VERSION", doubleval(substr(trim(exec("cat " . PSA_PATH . "version")), 0, 4)));
 
 //Default view - entries per page [25,50,100,200]
-define("DEFAULT_PERPAGE",100);
+define("DEFAULT_PERPAGE", 100);
 
 //Logtype file/mysql (mysql only for the patched spamdyke-version from haggybear.de)
-define("LOG_TYPE","mysql");
+define("LOG_TYPE", "mysql");
+define("LOG_LEVEL", "info");
 
 //Use whois detection for the daily reports! If false then the RDNS-detection will be used!
-define("WHOIS_DETECT",false);
+define("WHOIS_DETECT", false);
 
 //Show flattr Button in Headline
-define("SHOW_FLATTR",true);
+define("SHOW_FLATTR", true);
 
 //Master-Crypt-Key for Token encryption!
-define("CRYPT_KEY",DB_PWD);
- 
-?>
-
-
-
-
-
+define("CRYPT_KEY", DB_PWD);

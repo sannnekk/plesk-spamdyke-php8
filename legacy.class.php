@@ -13,22 +13,23 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
-class legacy{
+class legacy
+{
 
-      
-      var $authtype;
-      var $_login;
 
-      function __construct(){
-              $this->authtype = $_SESSION["auth"]["type"];
-              if(!isset($_SESSION["auth"]["glmlogin"]))$_SESSION["auth"]["glmlogin"] = pm_Session::getClient()->getProperty("login");
-              $this->_login = $_SESSION["auth"]["glmlogin"];
-              }
+        var $authtype;
+        var $_login;
 
-      function chkLevel($type){
-               if($type == $this->authtype)return true;
-               return false;
-               }      
+        function __construct()
+        {
+                $this->authtype = $_SESSION["auth"]["type"];
+                if (!isset($_SESSION["auth"]["glmlogin"])) $_SESSION["auth"]["glmlogin"] = pm_Session::getClient()->getProperty("login");
+                $this->_login = $_SESSION["auth"]["glmlogin"];
+        }
+
+        function chkLevel($type)
+        {
+                if ($type == $this->authtype) return true;
+                return false;
+        }
 }
-
-?>

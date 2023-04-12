@@ -20,12 +20,16 @@ You should have received a copy of the GNU General Public License along with thi
 
 ?>
 <html>
-<head>
-<title>Prozent</title>
-<meta http-equiv='refresh' content='1; URL=proz4stat.php?dom=<?php #echo $GET_["dom"];?>'>
-</head>
-<body bgcolor="#FFFFFF">
-<?php #print_r($out);?>
-</body>
-</html>
 
+<head>
+    <title>Prozent</title>
+    <meta http-equiv='refresh' content='1; URL=proz4stat.php?dom=<?php #echo $GET_["dom"];
+                                                                    ?>'>
+</head>
+
+<body bgcolor="#FFFFFF">
+    <?php #print_r($out);
+    ?>
+</body>
+
+</html>

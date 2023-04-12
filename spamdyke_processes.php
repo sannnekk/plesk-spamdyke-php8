@@ -13,6 +13,5 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 error_reporting(1);
-exec('ps -ef | grep spamdyke', $out); 
+exec('ps -ef | grep spamdyke', $out);
 echo count($out);
-?>

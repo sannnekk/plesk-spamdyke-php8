@@ -267,4 +267,3 @@ $tld['za'] = 'South Africa (za)';
 $tld['zm'] = 'Zambia (zm)';
 $tld['zr'] = 'Zaire, Former (zr)';
 $tld['zw'] = 'Zimbabwe (zw)';
-?>

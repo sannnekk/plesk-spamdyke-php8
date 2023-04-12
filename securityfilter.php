@@ -15,21 +15,21 @@ You should have received a copy of the GNU General Public License along with thi
 
 require __DIR__ . "/polyfills.php";
 
-function check($vars){
-         while (list($key, $val) = each($vars)){
+function check($vars)
+{
+   while (list($key, $val) = each($vars)) {
 
-                if(!is_array($val)){
-                   $val = preg_replace("[^0-9a-zA-Z./@\n_=#-\[\] ]","",$val);
-                   $val = htmlentities($val,ENT_QUOTES);
-		   }
-		$vars[$key] = $val;
-                }
+      if (!is_array($val)) {
+         $val = preg_replace("[^0-9a-zA-Z./@\n_=#-\[\] ]", "", $val);
+         $val = htmlentities($val, ENT_QUOTES);
+      }
+      $vars[$key] = $val;
+   }
 
-         return $vars;
-         }
+   return $vars;
+}
 
 
 
 $_POST = check($_POST);
 $_GET = check($_GET);
-?>
